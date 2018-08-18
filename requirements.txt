@@ -1,0 +1,4 @@
+flask==0.12.2
+pytest==3.7.1
+
+gunicorn==19.8.1
