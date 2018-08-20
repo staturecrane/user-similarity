@@ -1,3 +1,4 @@
+import numpy as np
 import similarity_api.utils as utils
 
 
@@ -12,3 +13,13 @@ def test_normalization():
 
         non_prob = utils.normalize(202, score_min, score_max)
         assert non_prob > 1.0
+
+
+def test_svd():
+    user_count = 100
+    item_count = 1000
+    nb_factors = 10
+    test_matrix = np.zeros((user_count, item_count))
+    svd = utils.make_svd(test_matrix, nb_factors=nb_factors)
+    assert len(svd[0]) == user_count
+    assert len(svd[0][0]) == nb_factors

@@ -1,7 +1,35 @@
 """
 Utility functions for Pluralsight similarity challenge
 """
+import numpy as np
+import tensorflow as tf
 
 
 def normalize(x, scoremin, scoremax):
-    return (x - scoremin)/(scoremax - scoremin)
+    return (x - scoremin) / (scoremax - scoremin)
+
+
+def cosine_similarity(x, y):
+    return np.dot(x, y) / (np.sqrt(np.dot(x, x)) * np.sqrt(np.dot(y, y)))
+
+
+def make_svd(data, nb_factors=10):
+    graph = tf.Graph()
+
+    with graph.as_default():
+        user_item_matrix = tf.placeholder(tf.float32, shape=data.shape)
+        st, ut, vt = tf.svd(user_item_matrix)
+        
+        sk = tf.diag(st)[0:nb_factors, 0:nb_factors]
+        uk = ut[:, 0:nb_factors]
+        vk = vt[0:nb_factors, :]
+        
+        su = tf.matmul(uk, tf.sqrt(sk))
+        
+    session = tf.InteractiveSession(graph=graph)
+
+    feed_dict = {user_item_matrix: data}
+    su_ = session.run([su], feed_dict=feed_dict)
+
+    session.close()
+    return su_
