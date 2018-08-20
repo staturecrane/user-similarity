@@ -36,7 +36,7 @@ Leave these in the root directory. They will be needed for the next step.
 python compute_similarity.py
 ```
 
-This will save the final similarity dictionary, `final_user_similarity.pickle' that will be used at API runtime.
+This will save the final similarity dictionary, `final_user_similarity.pickle` that will be used at API runtime.
 
 ## Running with Docker
 
