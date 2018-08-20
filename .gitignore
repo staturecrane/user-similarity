@@ -23,6 +23,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+*.pickle
 MANIFEST
 
 # PyInstaller
@@ -108,3 +109,5 @@ node_modules
 
 # Vscode settings
 /.vscode
+.DS_Store
+data_files_ml_engineer
