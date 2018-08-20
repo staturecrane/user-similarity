@@ -1,4 +1,6 @@
 import math
+import random
+
 import numpy as np
 import similarity_api.utils as utils
 
@@ -37,3 +39,11 @@ def test_cosine_similarity():
     bad_a = [0.0, 0.0, 0.0]
     bad_b = [0.0, 0.0, 0.0]
     assert math.isnan(utils.cosine_similarity(bad_a, bad_b))
+
+
+def test_most_similar():
+    num_items = 10
+    test_data = {i: random.random() for i in range(100)}
+    most_similar = utils.sort_most_similar(test_data, num_items=10)
+    assert all(most_similar)
+    assert len(most_similar) == num_items

@@ -20,4 +20,4 @@ COPY similarity_api/ /app/similarity_api/
 EXPOSE 5000
 ENV FLASK_APP nlp/main.py
 
-CMD pytest similarity_api/tests
+CMD pytest -s similarity_api/tests

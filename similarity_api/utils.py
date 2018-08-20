@@ -2,11 +2,16 @@
 Utility functions for Pluralsight similarity challenge
 """
 import numpy as np
+import operator
 import tensorflow as tf
 
 
 def normalize(x, scoremin, scoremax):
     return (x - scoremin) / (scoremax - scoremin)
+
+
+def euclidean(x, y):
+    return np.sqrt(np.sum((x-y)**2))
 
 
 def cosine_similarity(x, y):
@@ -33,3 +38,10 @@ def make_svd(data, nb_factors=10):
 
     session.close()
     return su_
+
+
+def sort_most_similar(similarity_table, num_items=10):
+    most_similar_tuple = sorted(similarity_table.items(), 
+                                key=operator.itemgetter(1),
+                                reverse=True)
+    return list(map(lambda x: x[0], most_similar_tuple[:10]))
