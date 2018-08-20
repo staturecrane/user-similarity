@@ -1,4 +1,4 @@
-# Pluralsight User Similarity
+# User Similarity
 
 API to determine similarity between Pluralsight users
 
