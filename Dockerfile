@@ -15,6 +15,7 @@ ENV PYTHONPATH /app
 COPY requirements.txt /app
 RUN pip3 install -q -r requirements.txt
 
+COPY final_user_similarity.pickle /app/
 COPY similarity_api/ /app/similarity_api/
 
 EXPOSE 5000

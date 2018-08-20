@@ -45,5 +45,4 @@ def test_most_similar():
     num_items = 10
     test_data = {i: random.random() for i in range(100)}
     most_similar = utils.sort_most_similar(test_data, num_items=10)
-    assert all(most_similar)
     assert len(most_similar) == num_items
