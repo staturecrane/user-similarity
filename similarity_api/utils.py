@@ -1,5 +1,5 @@
 """
-Utility functions for Pluralsight similarity challenge
+Utility functions
 """
 import numpy as np
 import operator
