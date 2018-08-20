@@ -66,6 +66,6 @@ Tests should all pass.
 
 ## Query a user
 
-# GET **/user/similarity/<handle>**
+# GET **/user/similarity/[handle]**
 
 Returns JSON list of 10 most similar users
