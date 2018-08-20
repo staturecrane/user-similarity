@@ -1,3 +1,4 @@
+import math
 import numpy as np
 import similarity_api.utils as utils
 
@@ -23,3 +24,16 @@ def test_svd():
     svd = utils.make_svd(test_matrix, nb_factors=nb_factors)
     assert len(svd[0]) == user_count
     assert len(svd[0][0]) == nb_factors
+
+
+def test_cosine_similarity():
+    good_a = [1.4, 0.01, 5.1]
+    good_b = [4.1, 0.0341, 2.0]
+    sim = utils.cosine_similarity(good_a, good_b)
+    
+    assert not math.isnan(sim)
+    assert sim > -math.inf or sim < math.inf
+
+    bad_a = [0.0, 0.0, 0.0]
+    bad_b = [0.0, 0.0, 0.0]
+    assert math.isnan(utils.cosine_similarity(bad_a, bad_b))

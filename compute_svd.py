@@ -1,3 +1,4 @@
+import argparse
 import pickle
 import sys
 
@@ -7,8 +8,12 @@ import tensorflow as tf
 
 import similarity_api.utils as utils
 
-data_folder = sys.argv[1]
+parser = argparse.ArgumentParser()
+parser.add_argument('-d', '--data', type=str, required=True, help="Directory containing CSV Files")
 
+args = parser.parse_args()
+
+data_folder = args.data
 course_tags = pd.read_csv(f'{data_folder}/course_tags.csv')
 user_assessment = pd.read_csv(f'{data_folder}/user_assessment_scores.csv')
 user_views = pd.read_csv(f'{data_folder}/user_course_views.csv')
