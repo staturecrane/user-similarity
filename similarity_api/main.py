@@ -1,5 +1,5 @@
 """
-Main runtime for FunnelAI NLP service
+Main runtime
 """
 import os
 import pickle
